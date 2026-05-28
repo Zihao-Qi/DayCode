@@ -28,7 +28,7 @@ export function useCommandMenu(): UseCommandMenuReturn {
         setTextValue(text);
         setSelectedIndex(0) ;
 
-        // Jump back to the top of the list when the user types a new charact
+        // Jump back to the top of the list when the user types a new character
         const scrollbox = scrollRef.current;
         if (scrollbox) {
             scrollbox.scrollTo(0);
