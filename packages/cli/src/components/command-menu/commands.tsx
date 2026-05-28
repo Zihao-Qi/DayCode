@@ -28,7 +28,7 @@ export const COMMANDS: Command[] = [
     },
     {
         name: "login",
-        description: "Sign in with your brower",
+        description: "Sign in with your browser",
         value: "/login",
     },
     {
