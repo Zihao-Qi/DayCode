@@ -40,7 +40,7 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
         if (!textarea) return;
 
         handleContentChange(textarea.plainText);
-    }, [])
+    }, [handleContentChange])
 
     const handleSubmit = useCallback(() => {
         if (disabled) return;
