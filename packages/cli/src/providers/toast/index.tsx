@@ -48,8 +48,8 @@ export function ToastProvider({ children }: ToastProviderProps) {
         clearCurrentTimeout();
 
         setCurrentToast({
-            variant: options.variant ?? "info",
             ...options,
+            variant: options.variant ?? "info",
             duration,
         });
 

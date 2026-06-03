@@ -69,7 +69,7 @@ function Dialog({ currentDialog, close }: DialogProps) {
     const { colors } = useTheme();
 
     useKeyboard((key) => {
-        if (!currentDialog || isTopLayer("dialog")) return;
+        if (!currentDialog || !isTopLayer("dialog")) return;
 
         if (key.name === "escape") {
             close();
