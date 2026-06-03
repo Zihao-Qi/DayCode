@@ -2,6 +2,7 @@ import type { RefObject } from "react";
 import { TextAttributes, type ScrollBoxRenderable } from "@opentui/core";
 import { COMMANDS } from "./commands";
 import { getFilteredCommands } from "./filter-commands";
+import { useTheme } from "../../providers/theme";
 
 const MAX_VISIBLE_ITEMS = 8;
 
@@ -22,10 +23,11 @@ export function CommandMenu({
     onSelect,
     onExecute,
 }: CommandMenuProps) {
-    const filtered = getFilteredCommands (query)
+    const { colors } = useTheme();
+    const filtered = getFilteredCommands(query)
     const visibleHeight = Math.min(filtered.length, MAX_VISIBLE_ITEMS);
     if (filtered.length === 0) {
-        return(
+        return (
             <box paddingX={1}>
                 <text attributes={TextAttributes.DIM}>
                     No matching commands
@@ -38,17 +40,17 @@ export function CommandMenu({
         <scrollbox ref={scrollRef} height={visibleHeight}>
             {filtered.map((cmd, i) => {
                 const isSelected = i === selectedIndex;
-                
+
                 return (
                     <box
-                    key={cmd.value}
-                    flexDirection="row"
-                    paddingX={1}
-                    height={1}
-                    overflow="hidden"
-                    backgroundColor={isSelected ? "#89B4FA" : undefined}
-                    onMouseMove={() => onSelect(i)}
-                    onMouseDown={() => onExecute(i)}
+                        key={cmd.value}
+                        flexDirection="row"
+                        paddingX={1}
+                        height={1}
+                        overflow="hidden"
+                        backgroundColor={isSelected ? colors.selection : undefined}
+                        onMouseMove={() => onSelect(i)}
+                        onMouseDown={() => onExecute(i)}
                     >
                         <box width={COMMAND_COL_WIDTH} flexShrink={0}>
                             <text selectable={false} fg={isSelected ? "black" : "white"}>
